@@ -10,7 +10,7 @@ async function boostrap() {
         await mongoose.connect(config.database_url as string);
         console.log("Database is connected");
         app.listen(config.port, () => {
-            console.log(`UM app listening on port ${config.port}`)
+            console.log(`app listening on port ${config.port}`)
           })
     }
     catch(err){

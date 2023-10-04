@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
 import app from "./app";
 import config from "./config";
 
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 
 async function boostrap() {

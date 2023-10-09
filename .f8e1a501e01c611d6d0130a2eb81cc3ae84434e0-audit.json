@@ -1,0 +1,60 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": ".f8e1a501e01c611d6d0130a2eb81cc3ae84434e0-audit.json",
+    "files": [
+        {
+            "date": 1696432278217,
+            "name": "application-2023-10-04-21.log",
+            "hash": "f24aab3418a2d8ba416f250e1563b9a9629c403b9480cd1441fc45f14d020e5f"
+        },
+        {
+            "date": 1696436068967,
+            "name": "application-2023-10-04-22.log",
+            "hash": "edd68ad73a91cc5ed057f00f2ab40fac1f8cabd94152e0f0aedfffd8ee370cbf"
+        },
+        {
+            "date": 1696507268772,
+            "name": "application-2023-10-05-18.log",
+            "hash": "e0cafbdaec6e4133d55970a26221ab4a92b83d15f4d5e1dbb80babef1943654b"
+        },
+        {
+            "date": 1696758876792,
+            "name": "application-2023-10-08-15.log",
+            "hash": "8906ec60382aad8a97d08102f65343be84ea6b8afc3f62323c7e02bcae1e74d0"
+        },
+        {
+            "date": 1696782378340,
+            "name": "application-2023-10-08-22.log",
+            "hash": "d826177f123f82d73782d9ec7939d167f9c633d328ad3092869ce7427fdbfb4e"
+        },
+        {
+            "date": 1696784520928,
+            "name": "application-2023-10-08-23.log",
+            "hash": "a8085ab88e1f6e68cfb797e1e7bb9646554b91d84e01bf605f5860a5534792f1"
+        },
+        {
+            "date": 1696840539572,
+            "name": "application-2023-10-09-14.log",
+            "hash": "c37a3e632bfe27b915e9130d4667645cc45be2fe949b37aff275d863c764f1ee"
+        },
+        {
+            "date": 1696842685396,
+            "name": "application-2023-10-09-15.log",
+            "hash": "b66b3b3f109e75a451d3a5f4d707715268ab11addb95a316df63c032a7ba725d"
+        },
+        {
+            "date": 1696854840258,
+            "name": "application-2023-10-09-18.log",
+            "hash": "3c27bef9bccf922a7d27fa1156fea01d563070b4add694d7f8536db0546d8839"
+        },
+        {
+            "date": 1696867328258,
+            "name": "application-2023-10-09-22.log",
+            "hash": "da49ebbe169133bbc3b57d9d88901faac52196b1ebccf8edc5ae24c3d5960baa"
+        }
+    ],
+    "hashType": "sha256"
+}

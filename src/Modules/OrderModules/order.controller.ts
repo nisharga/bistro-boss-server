@@ -72,10 +72,24 @@ const deleteOrder = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+const OrderSearchByEmail = catchAsync(async (req: Request, res: Response) => {
+  
+  const email = req.params.id
+  const result = await OrderService.orderSearchByEmail(email)
+
+  sendResponse<IUser>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'All Order in this email show Successfully',
+    data: result,
+  })
+})
+
 export const OrderController = {
   createOrder,
   getAllOrders,
   getSingleOrder,
   updateSingleOrder,
   deleteOrder,
+  OrderSearchByEmail
 }

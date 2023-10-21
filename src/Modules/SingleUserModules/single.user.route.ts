@@ -8,19 +8,15 @@ const router = express.Router()
 router.post(
   '/',
   validateRequest(SingleUserValidation.createSingleUserZodSchema),
-  SingleUserController.createSingleUser
+  SingleUserController.createSingleUser,
 )
-router.get(
-  '/', 
-  SingleUserController.getAllUsers
+
+router.post(
+  '/jwtcreate', 
+  SingleUserController.createJWT,
 )
-router.patch(
-    '/:id',
-    SingleUserController.updateSingleUser
-)
-router.delete(
-    '/:id',
-    SingleUserController.deleteSingleUser
-)
+router.get('/', SingleUserController.getAllUsers)
+router.patch('/:id', SingleUserController.updateSingleUser)
+router.delete('/:id', SingleUserController.deleteSingleUser)
 
 export const UserRoutes = router

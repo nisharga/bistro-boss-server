@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-import { Schema, model } from 'mongoose'  
+import { Schema, model } from 'mongoose'
 import { ISingleUser } from './single.user.interface'
 
 const SingleUserSchema = new Schema<ISingleUser>(
-  { 
+  {
     name: {
       type: String,
       required: true,
@@ -11,7 +11,7 @@ const SingleUserSchema = new Schema<ISingleUser>(
     image: {
       type: String,
       required: true,
-    }, 
+    },
     email: {
       type: String,
       required: true,

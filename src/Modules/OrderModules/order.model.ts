@@ -5,7 +5,7 @@ import { IUser } from './order.interface'
 const orderSchema = new Schema<IUser>(
   {
     id: {
-      type: String, 
+      type: String,
     },
     name: {
       type: String,

@@ -7,7 +7,7 @@ import {
   IUser,
   IUserFilterRequest,
   SearchableFields,
-} from './order.interface' 
+} from './order.interface'
 import { Order } from './order.model'
 
 const createOrder = async (orderDetails: IUser): Promise<IUser | null> => {
@@ -90,10 +90,17 @@ const deleteOrder = async (id: string): Promise<IUser | null> => {
   return result
 }
 
+const orderSearchByEmail = async (email: string): Promise<IUser | null> => {
+  const result = await Order.find({ email: email }).exec();
+  return result
+}
+
+
 export const OrderService = {
   createOrder,
   getAllOrder,
   getSingleOrder,
   updateOrder,
   deleteOrder,
+  orderSearchByEmail
 }

@@ -1,14 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { SortOrder } from "mongoose";
-import { IGenericResponse, IPaginationOptions, SearchableFields } from "../OrderModules/order.interface";
-import { ISingleUser, ISingleUserFilterRequest } from "./single.user.interface"
-import { SingleUser } from "./single.user.model"
-import { paginationHelpers } from "../../shared/paginationHelper";
+import { SortOrder } from 'mongoose'
+import {
+  IGenericResponse,
+  IPaginationOptions,
+  SearchableFields,
+} from '../OrderModules/order.interface'
+import { ISingleUser, ISingleUserFilterRequest } from './single.user.interface'
+import { SingleUser } from './single.user.model'
+import { paginationHelpers } from '../../shared/paginationHelper'
+import config from '../../config'
+// eslint-disable-next-line no-var, @typescript-eslint/no-var-requires, no-undef
+var jwt = require('jsonwebtoken');
 
-const createUser = async (userDetails: ISingleUser): Promise<ISingleUser | null> => {
+
+const createUser = async (
+  userDetails: ISingleUser,
+): Promise<ISingleUser | null> => {
   const newUser = await SingleUser.create(userDetails)
-  return newUser;
+  return newUser
 }
+
+const createJwt = ( email: any): any => {
+  const jwttoken = jwt.sign({data: email}, config.secret, { expiresIn: 60 * 60 }) 
+  return jwttoken
+}
+
+
 
 const getAllUser = async (
   filters: ISingleUserFilterRequest,
@@ -80,10 +97,10 @@ const deleteUser = async (id: string): Promise<ISingleUser | null> => {
   return result
 }
 
-
 export const SingleUserService = {
   createUser,
   getAllUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  createJwt
 }

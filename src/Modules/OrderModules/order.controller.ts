@@ -73,8 +73,8 @@ const deleteOrder = catchAsync(async (req: Request, res: Response) => {
 })
 
 const OrderSearchByEmail = catchAsync(async (req: Request, res: Response) => {
-  
-  const email = req.params.id
+  const email = req.params.email
+  // console.log(req.docoded.id)
   const result = await OrderService.orderSearchByEmail(email)
 
   sendResponse<IUser>(res, {
@@ -91,5 +91,5 @@ export const OrderController = {
   getSingleOrder,
   updateSingleOrder,
   deleteOrder,
-  OrderSearchByEmail
+  OrderSearchByEmail,
 }

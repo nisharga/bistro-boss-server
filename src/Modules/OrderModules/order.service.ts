@@ -91,10 +91,9 @@ const deleteOrder = async (id: string): Promise<IUser | null> => {
 }
 
 const orderSearchByEmail = async (email: string): Promise<IUser | null> => {
-  const result = await Order.find({ email: email }).exec();
-  return result
+  const result = await Order.find({ email: email }).exec(); // Use findOne instead of find
+  return result || null;
 }
-
 
 export const OrderService = {
   createOrder,
@@ -102,5 +101,5 @@ export const OrderService = {
   getSingleOrder,
   updateOrder,
   deleteOrder,
-  orderSearchByEmail
+  orderSearchByEmail,
 }

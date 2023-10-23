@@ -10,8 +10,7 @@ import { SingleUser } from './single.user.model'
 import { paginationHelpers } from '../../shared/paginationHelper'
 import config from '../../config'
 // eslint-disable-next-line no-var, @typescript-eslint/no-var-requires, no-undef
-var jwt = require('jsonwebtoken');
-
+var jwt = require('jsonwebtoken')
 
 const createUser = async (
   userDetails: ISingleUser,
@@ -20,12 +19,18 @@ const createUser = async (
   return newUser
 }
 
-const createJwt = ( email: any): any => {
-  const jwttoken = jwt.sign({data: email}, config.secret, { expiresIn: 60 * 60 }) 
+const createJwt = (email: any): any => {
+  const jwttoken = jwt.sign({ data: email }, config.secret, {
+    expiresIn: 60 * 60,
+  })
   return jwttoken
 }
 
-
+const getAdminEmail = async (email: string): Promise<any> => {
+  const user = await SingleUser.findOne({ email }).exec();
+  const result = { admin: user?.role === 'admin' }
+  return result
+}
 
 const getAllUser = async (
   filters: ISingleUserFilterRequest,
@@ -102,5 +107,6 @@ export const SingleUserService = {
   getAllUser,
   updateUser,
   deleteUser,
-  createJwt
+  createJwt,
+  getAdminEmail
 }

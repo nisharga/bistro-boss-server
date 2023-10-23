@@ -17,6 +17,6 @@ router.patch('/update/:id', OrderController.updateSingleOrder)
 router.delete('/delete/:id', OrderController.deleteOrder)
 
 // verify JWT middleware use
-router.get('/searchbyemail/:id', verifyJWT, OrderController.OrderSearchByEmail)
+router.get('/searchbyemail/:email', verifyJWT, OrderController.OrderSearchByEmail)
 
 export const OrderRoutes = router

@@ -11,6 +11,9 @@ app.use(globalErrorHandler)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// Serve static images from the 'uploads' folder
+app.use('/uploads', express.static('uploads'));
+
 // Routes
 app.use('/api/v1', routes)
 

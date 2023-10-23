@@ -12,7 +12,9 @@ import { ISingleUser } from './single.user.interface'
 
 const createSingleUser: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
-    const { ...singleUserData } = req.body
+     
+   const { ...singleUserData } = req.body 
+
     const result = await SingleUserService.createUser(singleUserData)
     sendResponse(res, {
       statusCode: httpStatus.OK,
@@ -77,10 +79,23 @@ const deleteSingleUser = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+const getAdminEmail = catchAsync(async (req: Request, res: Response) => {
+  const email = req.params.email
+  const result = await SingleUserService.getAdminEmail(email)
+
+  sendResponse<ISingleUser>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Admin information Retrived Successfully',
+    data: result,
+  })
+})
+
 export const SingleUserController = {
   createSingleUser,
   getAllUsers,
   updateSingleUser,
   deleteSingleUser,
-  createJWT
+  createJWT,
+  getAdminEmail
 }

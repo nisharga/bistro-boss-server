@@ -27,7 +27,7 @@ const createJwt = (email: any): any => {
 }
 
 const getAdminEmail = async (email: string): Promise<any> => {
-  const user = await SingleUser.findOne({ email }).exec();
+  const user = await SingleUser.findOne({ email }).exec()
   const result = { admin: user?.role === 'admin' }
   return result
 }
@@ -108,5 +108,5 @@ export const SingleUserService = {
   updateUser,
   deleteUser,
   createJwt,
-  getAdminEmail
+  getAdminEmail,
 }

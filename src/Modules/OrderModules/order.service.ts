@@ -91,8 +91,8 @@ const deleteOrder = async (id: string): Promise<IUser | null> => {
 }
 
 const orderSearchByEmail = async (email: string): Promise<IUser | null> => {
-  const result = await Order.find({ email: email }).exec(); // Use findOne instead of find
-  return result || null;
+  const result = await Order.find({ email: email }).exec() // Use findOne instead of find
+  return result || null
 }
 
 export const OrderService = {

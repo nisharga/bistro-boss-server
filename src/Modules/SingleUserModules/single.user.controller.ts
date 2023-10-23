@@ -12,8 +12,7 @@ import { ISingleUser } from './single.user.interface'
 
 const createSingleUser: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
-     
-   const { ...singleUserData } = req.body 
+    const { ...singleUserData } = req.body
 
     const result = await SingleUserService.createUser(singleUserData)
     sendResponse(res, {
@@ -81,6 +80,9 @@ const deleteSingleUser = catchAsync(async (req: Request, res: Response) => {
 
 const getAdminEmail = catchAsync(async (req: Request, res: Response) => {
   const email = req.params.email
+  /* if(req.decoded.email !== email){
+    res.send({admin: false})
+  } */
   const result = await SingleUserService.getAdminEmail(email)
 
   sendResponse<ISingleUser>(res, {
@@ -97,5 +99,5 @@ export const SingleUserController = {
   updateSingleUser,
   deleteSingleUser,
   createJWT,
-  getAdminEmail
+  getAdminEmail,
 }

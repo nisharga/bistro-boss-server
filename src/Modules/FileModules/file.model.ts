@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Schema, model } from 'mongoose' 
+import { Schema, model } from 'mongoose'
 import { IFile } from './file.interface'
 
 const fileSchema = new Schema<IFile>(
@@ -14,7 +14,7 @@ const fileSchema = new Schema<IFile>(
     path: {
       type: String,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,

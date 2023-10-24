@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Schema, model } from 'mongoose'  
+import { Schema, model } from 'mongoose'
 import { IMenu } from './menu.interface'
 
 const menuSchema = new Schema<IMenu>(
@@ -26,7 +26,7 @@ const menuSchema = new Schema<IMenu>(
     price: {
       type: Number,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,

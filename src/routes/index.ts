@@ -21,7 +21,7 @@ const moduleRoutes = [
   {
     path: '/menu',
     route: MenuRoutes,
-  }
+  },
 ]
 moduleRoutes.forEach(route => router.use(route.path, route.route))
 

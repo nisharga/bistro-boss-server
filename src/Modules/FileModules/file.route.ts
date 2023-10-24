@@ -4,10 +4,6 @@ import { uploadMiddleware } from '../../middleware/multerMiddleware'
 
 const router = express.Router()
 
-router.post(
-  '/create',
-  uploadMiddleware,
-  FileController.createFile,
-)
+router.post('/create', uploadMiddleware, FileController.createFile)
 
 export const FileRoutes = router

@@ -3,7 +3,6 @@ import validateRequest from '../../middleware/validateRequest'
 import { SingleUserValidation } from './single.user.validation'
 import { SingleUserController } from './single.user.controller'
 import verifyJWT from '../../middleware/verifyJWT'
-import verifyAdmin from '../../middleware/verifyAdmin'
 
 const router = express.Router()
 

@@ -2,9 +2,14 @@
 
 import { SortOrder } from 'mongoose'
 import { paginationHelpers } from '../../shared/paginationHelper'
-import { IMenu } from './menu.interface' 
-import { Menu } from './menu.model' 
-import { IGenericMenuResponse, IMenuFilterRequest, IPaginationMenuOptions, SearchableFieldsMenu } from './menu.ultis'
+import { IMenu } from './menu.interface'
+import { Menu } from './menu.model'
+import {
+  IGenericMenuResponse,
+  IMenuFilterRequest,
+  IPaginationMenuOptions,
+  SearchableFieldsMenu,
+} from './menu.ultis'
 
 const getSingleMenu = async (id: string): Promise<IMenu | null> => {
   const result = await Menu.findById(id)
@@ -87,11 +92,10 @@ const deleteMenu = async (id: string): Promise<IMenu | null> => {
   return result
 }
 
-
 export const MenuService = {
   getSingleMenu,
   createMenu,
   getAllMenu,
   updateMenu,
-  deleteMenu
+  deleteMenu,
 }

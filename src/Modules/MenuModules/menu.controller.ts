@@ -3,7 +3,7 @@ import catchAsync from '../../middleware/catchAsync'
 import sendResponse from '../../middleware/sendResponse'
 import httpStatus from 'http-status'
 import { MenuService } from './menu.service'
-import pick from '../../shared/pick' 
+import pick from '../../shared/pick'
 import { SearchableFieldsMenu } from './menu.ultis'
 import { paginationFields } from '../OrderModules/order.interface'
 import { IMenu } from './menu.interface'
@@ -19,7 +19,6 @@ const getSingleMenu = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
-
 
 const createMenu: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
@@ -81,5 +80,5 @@ export const MenuController = {
   createMenu,
   getAllMenus,
   updateMenu,
-  deleteMenu
+  deleteMenu,
 }

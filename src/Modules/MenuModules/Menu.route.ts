@@ -1,7 +1,5 @@
 import express from 'express'
 import { MenuController } from './menu.controller'
-import verifyJWT from '../../middleware/verifyJWT'
-import verifyAdmin from '../../middleware/verifyAdmin'
 
 const router = express.Router()
 // verifyJWT, verifyAdmin - POST

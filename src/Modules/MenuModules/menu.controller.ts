@@ -64,8 +64,7 @@ const updateMenu = catchAsync(async (req: Request, res: Response) => {
 })
 
 const getAll = catchAsync(async (req: Request, res: Response) => {
-
-  const result = await MenuService.getAll();
+  const result = await MenuService.getAll()
 
   sendResponse<IMenu>(res, {
     statusCode: httpStatus.OK,
@@ -93,5 +92,5 @@ export const MenuController = {
   getAllMenus,
   updateMenu,
   deleteMenu,
-  getAll
+  getAll,
 }

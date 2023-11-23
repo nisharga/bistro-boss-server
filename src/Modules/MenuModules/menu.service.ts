@@ -21,7 +21,7 @@ const createMenu = async (menuDetails: IMenu): Promise<IMenu | null> => {
   return menu
 }
 const getAll = async (): Promise<IMenu[] | null> => {
-  const menu = await Menu.find();
+  const menu = await Menu.find()
   return menu
 }
 
@@ -102,5 +102,5 @@ export const MenuService = {
   getAllMenu,
   updateMenu,
   deleteMenu,
-  getAll
+  getAll,
 }

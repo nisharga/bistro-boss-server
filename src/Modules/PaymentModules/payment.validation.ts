@@ -8,10 +8,10 @@ const createpaymentZodSchema = z.object({
     quantity: z.string().optional(),
     date: z.string().optional(),
     cartItems: z.array(z.string()).optional(),
-    productNames: z.array(z.string()).optional()
+    productNames: z.array(z.string()).optional(),
   }),
 })
 
 export const PaymentValidation = {
-    createpaymentZodSchema,
+  createpaymentZodSchema,
 }

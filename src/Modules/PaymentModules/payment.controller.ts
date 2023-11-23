@@ -1,10 +1,9 @@
 import { Request, RequestHandler, Response } from 'express'
-import catchAsync from '../../middleware/catchAsync' 
-import httpStatus from 'http-status' 
+import catchAsync from '../../middleware/catchAsync'
+import httpStatus from 'http-status'
 import { PaymentService } from './payment.service'
 import sendResponse from '../../middleware/sendResponse'
 import { IPayment } from './payment.interface'
-  
 
 const createSinglePayment: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
@@ -19,15 +18,14 @@ const createSinglePayment: RequestHandler = catchAsync(
     })
   },
 )
- 
+
 const getAllPayment = catchAsync(async (req: Request, res: Response) => {
-   
   const result = await PaymentService.getAllPayment()
 
   sendResponse<IPayment[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'All Payment Retrived Successfully', 
+    message: 'All Payment Retrived Successfully',
     data: result,
   })
 })
@@ -44,9 +42,9 @@ const updatePayment = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
- 
+
 export const paymentController = {
-    createSinglePayment,
-    getAllPayment,
-    updatePayment
+  createSinglePayment,
+  getAllPayment,
+  updatePayment,
 }

@@ -28,9 +28,6 @@ router.post(
   OrderController.OrderDeleteByEmail,
 )
 
-router.post(
-  '/create-payment-intent',
-  OrderController.stripePayController
-)
+router.post('/create-payment-intent', OrderController.stripePayController)
 
 export const OrderRoutes = router

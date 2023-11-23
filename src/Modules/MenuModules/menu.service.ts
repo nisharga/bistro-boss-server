@@ -20,6 +20,10 @@ const createMenu = async (menuDetails: IMenu): Promise<IMenu | null> => {
   const menu = await Menu.create(menuDetails)
   return menu
 }
+const getAll = async (): Promise<IMenu[] | null> => {
+  const menu = await Menu.find();
+  return menu
+}
 
 const getAllMenu = async (
   filters: IMenuFilterRequest,
@@ -98,4 +102,5 @@ export const MenuService = {
   getAllMenu,
   updateMenu,
   deleteMenu,
+  getAll
 }

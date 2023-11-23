@@ -12,13 +12,17 @@ declare global {
   }
 }
 
-const verifyAdmin = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const verifyAdmin = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<any> => {
   const email = req.decoded.email
-  const user = await SingleUser.find({ email: email }).exec() 
+  const user = await SingleUser.find({ email: email }).exec()
   if (user?.role !== 'admin') {
-    return res.status(403).send({ error: true, message: 'forbidden message' });
+    return res.status(403).send({ error: true, message: 'forbidden message' })
   }
-  next();
+  next()
 }
 
 export default verifyAdmin

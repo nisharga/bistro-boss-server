@@ -8,4 +8,5 @@ export default {
   database_url: process.env.DATABASE_URL,
   env: process.env.NODE_ENV,
   secret: process.env.ACCESS_TOKEN_SECRET,
+  sktest: process.env.SK_TEST,
 }

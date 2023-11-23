@@ -85,6 +85,34 @@ const OrderSearchByEmail = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+const OrderDeleteByEmail = catchAsync(async (req: Request, res: Response) => {
+  const email = req.params.email
+  // console.log(req.docoded.id)
+  const result = await OrderService.allOrderDeleteByEmail(email)
+
+  sendResponse<IUser>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'All Order in this email delete Successfully',
+    data: result,
+  })
+})
+
+
+const stripePayController = catchAsync(async (req: Request, res: Response) => {
+   const { price } = req.body;
+   const amount = price * 100
+  // console.log(req.docoded.id)
+  const result = await OrderService.stripePay(amount)
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Payment Successfully Done!!',
+    data: result,
+  })
+})
+
 export const OrderController = {
   createOrder,
   getAllOrders,
@@ -92,4 +120,6 @@ export const OrderController = {
   updateSingleOrder,
   deleteOrder,
   OrderSearchByEmail,
+  OrderDeleteByEmail,
+  stripePayController
 }

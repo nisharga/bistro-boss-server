@@ -22,5 +22,15 @@ router.get(
   verifyJWT,
   OrderController.OrderSearchByEmail,
 )
+router.post(
+  '/deletebyemail/:email',
+  verifyJWT,
+  OrderController.OrderDeleteByEmail,
+)
+
+router.post(
+  '/create-payment-intent',
+  OrderController.stripePayController
+)
 
 export const OrderRoutes = router

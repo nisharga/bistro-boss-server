@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { SortOrder } from 'mongoose'
 import { paginationHelpers } from '../../shared/paginationHelper'
@@ -8,7 +12,10 @@ import {
   IUserFilterRequest,
   SearchableFields,
 } from './order.interface'
-import { Order } from './order.model'
+import { Order } from './order.model' 
+import config from '../../config';
+
+const stripe = require("stripe")(config.sktest);
 
 const createOrder = async (orderDetails: IUser): Promise<IUser | null> => {
   const newOrder = await Order.create(orderDetails)
@@ -90,10 +97,29 @@ const deleteOrder = async (id: string): Promise<IUser | null> => {
   return result
 }
 
-const orderSearchByEmail = async (email: string): Promise<IUser | null> => {
+const orderSearchByEmail = async (email: string): Promise<IUser | any> => {
   const result = await Order.find({ email: email }).exec() // Use findOne instead of find
-  return result || null
+  return result;
 }
+
+const allOrderDeleteByEmail = async (email: string): Promise<IUser | any> => {
+  const result = await Order.deleteMany({ email: email }).exec();
+  return result;
+}
+
+const stripePay = async (amount: any): Promise<any> => {
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: amount,
+    currency: "usd",
+    automatic_payment_methods: {
+      enabled: true,
+    },
+  });
+   return paymentIntent.client_secret;
+}
+ 
+
+
 
 export const OrderService = {
   createOrder,
@@ -102,4 +128,6 @@ export const OrderService = {
   updateOrder,
   deleteOrder,
   orderSearchByEmail,
+  allOrderDeleteByEmail,
+  stripePay
 }

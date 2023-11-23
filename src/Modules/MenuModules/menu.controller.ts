@@ -63,6 +63,18 @@ const updateMenu = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+const getAll = catchAsync(async (req: Request, res: Response) => {
+
+  const result = await MenuService.getAll();
+
+  sendResponse<IMenu>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Get All Menu Successfully',
+    data: result,
+  })
+})
+
 const deleteMenu = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id
   const result = await MenuService.deleteMenu(id)
@@ -81,4 +93,5 @@ export const MenuController = {
   getAllMenus,
   updateMenu,
   deleteMenu,
+  getAll
 }

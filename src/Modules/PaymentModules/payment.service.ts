@@ -25,8 +25,14 @@ const updatePayment = async (
   return result
 }
 
+const paymentSearchByEmail = async (email: string): Promise<IPayment | any> => {
+    const result = await Payment.find({ email: email }).exec() // Use findOne instead of find
+    return result
+  }
+
 export const PaymentService = {
   createPayment,
   getAllPayment,
   updatePayment,
+  paymentSearchByEmail
 }

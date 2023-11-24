@@ -100,7 +100,7 @@ const OrderDeleteByEmail = catchAsync(async (req: Request, res: Response) => {
 
 const stripePayController = catchAsync(async (req: Request, res: Response) => {
   const { price } = req.body
-  const amount = price * 100
+  const amount =  price * 100  
   // console.log(req.docoded.id)
   const result = await OrderService.stripePay(amount)
 

@@ -43,8 +43,22 @@ const updatePayment = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+const paymentSearchByEmail = catchAsync(async (req: Request, res: Response) => {
+    const email = req.params.email
+    // console.log(req.docoded.id)
+    const result = await PaymentService.paymentSearchByEmail(email)
+  
+    sendResponse<IPayment>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'All Payment in this email show Successfully',
+      data: result,
+    })
+  })
+
 export const paymentController = {
   createSinglePayment,
   getAllPayment,
   updatePayment,
+  paymentSearchByEmail
 }

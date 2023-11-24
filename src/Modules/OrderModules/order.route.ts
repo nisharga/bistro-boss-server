@@ -22,7 +22,7 @@ router.get(
   verifyJWT,
   OrderController.OrderSearchByEmail,
 )
-router.post(
+router.delete(
   '/deletebyemail/:email',
   verifyJWT,
   OrderController.OrderDeleteByEmail,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 import { ErrorRequestHandler, NextFunction } from 'express'
 import config from '../config'
@@ -5,7 +6,12 @@ import ApiError from '../errors/ApiError'
 import { IGenericErrorMessage } from '../interfaces/error'
 import handleValidationError from '../errors/handleValidationError'
 
-const globalErrorHandler: ErrorRequestHandler = (error, req, res, next: NextFunction) => {
+const globalErrorHandler: ErrorRequestHandler = (
+  error,
+  req,
+  res,
+  next: NextFunction,
+) => {
   // let statusCode = 500
   let message = 'Something went wrong!'
   let errorMessage: IGenericErrorMessage[] = []

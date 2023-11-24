@@ -1,13 +1,19 @@
 import express from 'express'
 import { paymentController } from './payment.controller'
+import verifyJWT from '../../middleware/verifyJWT'
 
 const router = express.Router()
 
 router.post(
-  '/',
-  //   validateRequest(SingleUserValidation.createSingleUserZodSchema),
+  '/', 
   paymentController.createSinglePayment,
 )
+
+router.get(
+    '/searchbyemail/:email',
+    verifyJWT,
+    paymentController.paymentSearchByEmail,
+ )
 
 router.get('/', paymentController.getAllPayment)
 

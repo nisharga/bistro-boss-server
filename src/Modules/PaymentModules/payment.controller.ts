@@ -44,21 +44,33 @@ const updatePayment = catchAsync(async (req: Request, res: Response) => {
 })
 
 const paymentSearchByEmail = catchAsync(async (req: Request, res: Response) => {
-    const email = req.params.email
-    // console.log(req.docoded.id)
-    const result = await PaymentService.paymentSearchByEmail(email)
-  
-    sendResponse<IPayment>(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'All Payment in this email show Successfully',
-      data: result,
-    })
+  const email = req.params.email
+  // console.log(req.docoded.id)
+  const result = await PaymentService.paymentSearchByEmail(email)
+
+  sendResponse<IPayment>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'All Payment in this email show Successfully',
+    data: result,
   })
+})
+
+const adminDashboard = catchAsync(async (req: Request, res: Response) => {
+  const result = await PaymentService.adminDashboard()
+
+  sendResponse<IPayment[]>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Admin Dashboard Retrived Successfully',
+    data: result,
+  })
+})
 
 export const paymentController = {
   createSinglePayment,
   getAllPayment,
   updatePayment,
-  paymentSearchByEmail
+  paymentSearchByEmail,
+  adminDashboard
 }

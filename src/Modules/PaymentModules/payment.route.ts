@@ -1,6 +1,6 @@
 import express from 'express'
 import { paymentController } from './payment.controller'
-import verifyJWT from '../../middleware/verifyJWT'
+import verifyJWT from '../../middleware/verifyJWT' 
 
 const router = express.Router()
 
@@ -14,7 +14,7 @@ router.get(
 
 router.get('/', paymentController.getAllPayment)
 
-router.get('/admindashboard', paymentController.adminDashboard)
+router.get('/admindashboard', verifyJWT, paymentController.adminDashboard)
 
 router.patch('/:id', paymentController.updatePayment)
 

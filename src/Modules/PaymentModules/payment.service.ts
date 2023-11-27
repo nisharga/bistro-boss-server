@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { Menu } from '../MenuModules/menu.model'
+import sendPaymentConfimationEmail from '../SendMail/SendMail'
 import { SingleUser } from '../SingleUserModules/single.user.model'
 import { IPayment } from './payment.interface'
 import { Payment } from './payment.model'
@@ -9,6 +10,7 @@ const createPayment = async (
   paymentDetails: IPayment,
 ): Promise<IPayment | null> => {
   const payment = await Payment.create(paymentDetails)
+  sendPaymentConfimationEmail(payment);
   return payment
 }
 
@@ -40,7 +42,7 @@ const adminDashboard = async (): Promise<any | null> => {
         totalPrice: { $sum: '$price' },
       },
     },
-  ]);
+  ])
   const totalUser = await SingleUser.aggregate([
     {
       $group: {
@@ -48,7 +50,7 @@ const adminDashboard = async (): Promise<any | null> => {
         totalCount: { $sum: 1 },
       },
     },
-  ]);
+  ])
   const totalProduct = await Menu.aggregate([
     {
       $group: {
@@ -56,7 +58,7 @@ const adminDashboard = async (): Promise<any | null> => {
         totalCount: { $sum: 1 },
       },
     },
-  ]);
+  ])
   const orders = await Payment.aggregate([
     {
       $group: {
@@ -64,24 +66,22 @@ const adminDashboard = async (): Promise<any | null> => {
         totalCount: { $sum: 1 },
       },
     },
-  ]);
+  ])
 
   const result = {
     totalUser: totalUser[0]?.totalCount || 0,
     totalRevinue: totalRevinue[0]?.totalPrice || 0,
     totalProduct: totalProduct[0]?.totalCount || 0,
     orders: orders[0]?.totalCount || 0,
-  };
+  }
 
-  return { data: result };
- 
-
-} 
+  return { data: result }
+}
 
 export const PaymentService = {
   createPayment,
   getAllPayment,
   updatePayment,
   paymentSearchByEmail,
-  adminDashboard
+  adminDashboard,
 }

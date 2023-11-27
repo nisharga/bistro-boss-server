@@ -72,5 +72,5 @@ export const paymentController = {
   getAllPayment,
   updatePayment,
   paymentSearchByEmail,
-  adminDashboard
+  adminDashboard,
 }
